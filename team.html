@@ -34,7 +34,7 @@ intro_image_hide_on_mobile: false
     {% endfor %}
 </div>
 <div class="row px-2">
-    {% assign current_team = team | where_exp: "member", "member.status != 'Past'" %}
+    {% assign current_team = team | where_exp: "member", "member.status != 'Past'" | sort: "name" %}
     {% for member in current_team %}
     {% if member.promoted == nil %}
     <div class="col-12 col-sm-6 col-lg-4 mb-3 px-1">
