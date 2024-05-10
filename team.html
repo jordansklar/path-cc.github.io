@@ -36,7 +36,8 @@ intro_image_hide_on_mobile: false
 <div class="row px-2">
     {% assign team = team | sort: "weight" | sort: "name" %}
     {% for member in team %}
-    {% if member.promoted != nil and member.status != "Past" %}
+    {% if member.promoted != nil %}
+    {% if member.status != "Past" %}
     <div class="col-12 col-sm-6 col-lg-4 mb-3 px-1">
         <div class="ps-5 ps-sm-0 team team-summary my-2">
             {% if member.image %}
@@ -57,14 +58,14 @@ intro_image_hide_on_mobile: false
             </div>
         </div>
     </div>
+    {% endif %}
     {% endif %}
     {% endfor %}
 </div>
 <div class="row px-2">
     <h3 class="col-12">Previous Team Members</h3>
-    {% assign team = team | sort: "weight" | sort: "name" %}
-    {% for member in team %}
-    {% if member.status == "Past" %}
+    {% assign previous_teams = team | where: "status", "Past" | sort: "name" %}
+    {% for member in previous_teams %}
     <div class="col-12 col-sm-6 col-lg-4 mb-3 px-1">
         <div class="ps-5 ps-sm-0 team team-summary my-2">
             {% if member.image %}
@@ -85,6 +86,5 @@ intro_image_hide_on_mobile: false
             </div>
         </div>
     </div>
-    {% endif %}
     {% endfor %}
 </div>
