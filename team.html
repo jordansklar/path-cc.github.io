@@ -63,7 +63,7 @@ intro_image_hide_on_mobile: false
     {% endfor %}
 </div>
 <div class="row px-2">
-    <h3 class="col-12">Previous Team Members</h3>
+    <h3 class="col-12 mt-3">Previous Team Members</h3>
     {% assign previous_teams = team | where: "status", "Past" | sort: "name" %}
     {% for member in previous_teams %}
     <div class="col-12 col-sm-6 col-lg-4 mb-3 px-1">
