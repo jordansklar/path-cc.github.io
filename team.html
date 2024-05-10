@@ -34,9 +34,9 @@ intro_image_hide_on_mobile: false
     {% endfor %}
 </div>
 <div class="row px-2">
-    {% assign team = team | sort: "weight" | sort: "name" %}
-    {% for member in team %}
-    {% if member.promoted != nil %}
+    {% assign current_team = team | where_exp: "member", "member.status != 'Past'" %}
+    {% for member in current_team %}
+    {% if member.promoted == nil %}
     <div class="col-12 col-sm-6 col-lg-4 mb-3 px-1">
         <div class="ps-5 ps-sm-0 team team-summary my-2">
             {% if member.image %}
